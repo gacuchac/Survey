@@ -13,7 +13,7 @@ class SurveyAdmin(admin.ModelAdmin):
 
 class AnswerInlineModel(admin.TabularInline):
     model = models.Answer
-    fields =['answer_text','is_right','image']
+    fields =['answer_text','is_right','image','image_url']
 
 @admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin):
