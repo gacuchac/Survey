@@ -73,6 +73,7 @@ class Answer(Updated):
     answer_text = models.CharField(max_length=255, verbose_name=_("Answer Text"))
     is_right = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/', default='images/default.png')
+    image_url = models.CharField(max_length=255, verbose_name='image_url', default='https://drive.google.com/uc?export=view&id=14fX5yGbI0xrApvbx58fXkqequoyBSY9Z')
 
     def __str__(self):
         return self.answer_text

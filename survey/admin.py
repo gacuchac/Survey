@@ -24,4 +24,4 @@ class QuestionAdmin(admin.ModelAdmin):
     
 @admin.register(models.Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display =['id','question','answer_text','is_right','image']
+    list_display =['id','question','answer_text','is_right','image','image_url']
