@@ -77,3 +77,12 @@ class Answer(Updated):
 
     def __str__(self):
         return self.answer_text
+
+class Reply(models.Model):
+    class Meta:
+        verbose_name = _("Reply")
+        verbose_name_plural = _("Replies")
+        ordering = ['id']
+    
+    answer = models.ForeignKey(Answer, related_name='reply', on_delete=models.DO_NOTHING)
+    

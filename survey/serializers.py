@@ -1,5 +1,6 @@
+from django.db.models.base import Model
 from rest_framework import serializers
-from .models import Survey, Question, Answer
+from .models import Reply, Survey, Question, Answer
 
 
 class SurveySerializer(serializers.ModelSerializer):
@@ -42,3 +43,10 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = [
             'survey','title','answer',
         ]
+
+class ReplySerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = Reply
+        fields = '__all__'
