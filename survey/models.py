@@ -85,4 +85,5 @@ class Reply(models.Model):
         ordering = ['id']
     
     answer = models.ForeignKey(Answer, related_name='reply', on_delete=models.DO_NOTHING)
+    comment = models.CharField(max_length=255, verbose_name=_("Comment Text"), default="")
     

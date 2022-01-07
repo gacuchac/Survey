@@ -28,4 +28,4 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(models.Reply)
 class ReplyAdmin(admin.ModelAdmin):
-    list_display = ['id','answer']
+    list_display = ['id','answer','comment']
