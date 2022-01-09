@@ -10,6 +10,7 @@ from .models import Reply, Survey, Question
 from .serializers import QuestionSerializer, ReplySerializer, SurveySerializer
 from rest_framework.views import APIView
 from rest_framework import status, viewsets
+from django.db.models import Q
 
 # Create your views here.
 
@@ -20,7 +21,7 @@ class Survey(generics.ListAPIView):
 class SurveyQuestion(APIView):
 
     def get(self, request, format=None, **kwargs):
-        question = Question.objects.filter(survey__title=kwargs['topic']).order_by('?')#[:1]
+        question = Question.objects.filter(Q(survey__title=kwargs['topic']) | Q(survey__title='Ciudad Santiago')).order_by('id')
         serializer = QuestionSerializer(question, many=True)
 
         return Response(serializer.data)
