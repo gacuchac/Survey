@@ -19,7 +19,7 @@ class Survey(models.Model):
         verbose_name_plural = _("Surveys")
         ordering = ['id']
 
-    category = models.ForeignKey(Category, default=1, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, default=_("New Survey"), verbose_name=_("Survey Title"))
     date_created = models.DateTimeField(auto_now_add=True)
 
@@ -52,12 +52,12 @@ class Question(Updated):
         (0, _("Multiple Choice")),
     )
 
-    survey = models.ForeignKey(Survey, related_name='question', on_delete=models.DO_NOTHING)
+    survey = models.ForeignKey(Survey, related_name='question', on_delete=models.CASCADE)
     technique = models.IntegerField(choices=TYPE, default=0, verbose_name=_("Type of Question"))
     difficulty = models.IntegerField(choices=SCALE, default=0, verbose_name=_("Level of Difficulty"))
     title = models.CharField(max_length=255, verbose_name=_("Title"))
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
-    is_active = models.BooleanField(default=False, verbose_name=_("Active Status"))
+    is_active = models.BooleanField(default=True, verbose_name=_("Active Status"))
 
     def __str__(self):
         return self.title
@@ -69,7 +69,7 @@ class Answer(Updated):
         verbose_name_plural = _("Answers")
         ordering = ['id']
 
-    question = models.ForeignKey(Question, related_name='answer', on_delete=models.DO_NOTHING)
+    question = models.ForeignKey(Question, related_name='answer', on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=255, verbose_name=_("Answer Text"))
     is_right = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/', default='images/default.png')
@@ -84,6 +84,6 @@ class Reply(models.Model):
         verbose_name_plural = _("Replies")
         ordering = ['id']
     
-    answer = models.ForeignKey(Answer, related_name='reply', on_delete=models.DO_NOTHING)
+    answer = models.ForeignKey(Answer, related_name='reply', on_delete=models.CASCADE)
     comment = models.CharField(max_length=255, verbose_name=_("Comment Text"), default="")
     
