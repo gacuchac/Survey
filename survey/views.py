@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from rest_framework.decorators import api_view
 from .models import Reply, Survey, Question
-from .serializers import QuestionSerializer, ReplySerializer, SurveySerializer
+from .serializers import QuestionSerializer, ReplySerializer, SurveySerializer, FinalCommentSerializer
 from rest_framework.views import APIView
 from rest_framework import status, viewsets
 from django.db.models import Q
@@ -41,6 +41,15 @@ class ReplyViewset(viewsets.ModelViewSet):
 @api_view(['POST'])
 def replyCreate(request):
     serializer = ReplySerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+    else:
+        return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def finalCommentCreate(request):
+    serializer = FinalCommentSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)

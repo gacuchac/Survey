@@ -37,3 +37,7 @@ class QuestionInlineModel(admin.TabularInline):
 class SurveyAdmin(admin.ModelAdmin):
     list_display =['id','title','category','date_created']
     inlines = [QuestionInlineModel,]
+
+@admin.register(models.FinalComment)
+class FinalCommentAdmin(admin.ModelAdmin):
+    list_display = ['id','survey','final_comment']

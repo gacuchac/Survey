@@ -84,6 +84,15 @@ class Reply(models.Model):
         verbose_name_plural = _("Replies")
         ordering = ['id']
     
-    answer = models.ForeignKey(Answer, related_name='reply', on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, related_name='reply', on_delete=models.DO_NOTHING)
     comment = models.CharField(max_length=255, verbose_name=_("Comment Text"), default="")
+
+class FinalComment(models.Model):
+    class Meta:
+        verbose_name = _("Final Comment")
+        verbose_name_plural = _("Final Comments")
+        ordering = ['id']
+    
+    final_comment = models.CharField(max_length=255, verbose_name=_("Final Comment Text"), default="")
+    survey = models.ForeignKey(Survey, related_name='survey', on_delete=models.DO_NOTHING)
     
