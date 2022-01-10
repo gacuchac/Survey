@@ -49,7 +49,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
+    'survey.middle.DisableCSRFMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -138,6 +139,6 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1', 'https://ciudades.imfd.cl']
+CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1', 'https://ciudades.imfd.cl/*', 'http://10.0.107.1/']
 
-CORS_ALLOWED_ALL_ORIGINS = True
+CORS_ALLOWED_ALL_ORIGINS = False
