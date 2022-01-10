@@ -95,4 +95,6 @@ class FinalComment(models.Model):
     
     final_comment = models.CharField(max_length=255, verbose_name=_("Final Comment Text"), default="")
     survey = models.ForeignKey(Survey, related_name='survey', on_delete=models.DO_NOTHING)
+    knowledge_scale = models.IntegerField(default=0)
+    reason = models.CharField(max_length=255, default="")
     

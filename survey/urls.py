@@ -7,7 +7,7 @@ app_name='survey'
 
 urlpatterns = [
     path('', Survey.as_view(), name='survey'),
-    path('<str:topic>/', SurveyQuestion.as_view(), name='questions' ),
+    path('<str:title>/', SurveyQuestion.as_view(), name='questions' ),
     path('reply/create/', replyCreate, name='create'),
     path('reply/finalcomment/',finalCommentCreate, name='create'),
 ]

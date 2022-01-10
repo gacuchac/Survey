@@ -40,4 +40,4 @@ class SurveyAdmin(admin.ModelAdmin):
 
 @admin.register(models.FinalComment)
 class FinalCommentAdmin(admin.ModelAdmin):
-    list_display = ['id','survey','final_comment']
+    list_display = ['id','survey','final_comment','knowledge_scale','reason']

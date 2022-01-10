@@ -21,19 +21,11 @@ class Survey(generics.ListAPIView):
 class SurveyQuestion(APIView):
 
     def get(self, request, format=None, **kwargs):
-        question = Question.objects.filter(Q(survey__title=kwargs['topic']) | Q(survey__title='Ciudad Santiago')).order_by('id')
+        question = Question.objects.filter(Q(survey__title=kwargs['title']) | Q(survey__title='Ciudad Santiago')).order_by('id')
         serializer = QuestionSerializer(question, many=True)
 
         return Response(serializer.data)
-
-    """ def post(self, request):
-        serializer = ReplySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
-        else:
-            return Response({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
- """
+        
 class ReplyViewset(viewsets.ModelViewSet):
     queryset = Reply.objects.all()
     serializer = ReplySerializer
