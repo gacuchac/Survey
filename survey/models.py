@@ -20,7 +20,7 @@ class Survey(models.Model):
         ordering = ['id']
 
     category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255, default=_("New Survey"), verbose_name=_("Survey Title"))
+    title = models.CharField(max_length=255, unique=True, verbose_name=_("Survey Title"))
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
