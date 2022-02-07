@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
@@ -21,7 +22,7 @@ class Survey(models.Model):
 
     category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True, verbose_name=_("Survey Title"))
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
 
     def __str__(self):
         return self.title
@@ -74,6 +75,7 @@ class Answer(Updated):
     is_right = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/', default='images/default.png')
     image_url = models.CharField(max_length=255, verbose_name='image_url', default='https://drive.google.com/uc?export=view&id=14fX5yGbI0xrApvbx58fXkqequoyBSY9Z')
+    #date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
 
     def __str__(self):
         return self.answer_text
@@ -86,6 +88,9 @@ class Reply(models.Model):
     
     answer = models.ForeignKey(Answer, related_name='reply', on_delete=models.DO_NOTHING)
     comment = models.CharField(max_length=255, verbose_name=_("Comment Text"), default="")
+    knowledge_scale = models.IntegerField(default=0)
+    reason = models.CharField(max_length=255, default="")
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
 
 class FinalComment(models.Model):
     class Meta:
@@ -95,6 +100,4 @@ class FinalComment(models.Model):
     
     final_comment = models.CharField(max_length=255, verbose_name=_("Final Comment Text"), default="")
     survey = models.ForeignKey(Survey, related_name='survey', on_delete=models.DO_NOTHING)
-    knowledge_scale = models.IntegerField(default=0)
-    reason = models.CharField(max_length=255, default="")
-    
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^8#u3$=5i!fpc6r93)g1vxp1!!2m6)zri^ns7+nb#3+---dq2a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,13 +47,17 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
+    'survey.middle.DisableCSRFMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
+ROOT_HOSTCONF = "https://ciudades.imfd.cl/backend-2/"
+FORCE_SCRIPT_NAME = "/backend-2"
+ADMIN_MEDIA_PREFIX = "/backend-2"
 
 TEMPLATES = [
     {
@@ -120,6 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -130,7 +135,10 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:3000',
     'http://localhost:3000',
     'http://127.0.0.1:8000',
+    'https://ciudades.imfd.cl',
     'http://localhost:8000',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1', 'https://ciudades.imfd.cl/*', 'http://10.0.107.1/']
 
 CORS_ALLOWED_ALL_ORIGINS = True

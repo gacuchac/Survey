@@ -25,7 +25,7 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(models.Reply)
 class ReplyAdmin(admin.ModelAdmin):
-    list_display = ['id','answer','comment']
+    list_display = ['id','answer','comment','knowledge_scale','reason','date_created']
 
 class QuestionInlineModel(admin.TabularInline):
     model = models.Question
@@ -40,4 +40,4 @@ class SurveyAdmin(admin.ModelAdmin):
 
 @admin.register(models.FinalComment)
 class FinalCommentAdmin(admin.ModelAdmin):
-    list_display = ['id','survey','final_comment','knowledge_scale','reason']
+    list_display = ['id','survey','final_comment','date_created']
