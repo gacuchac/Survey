@@ -60,10 +60,6 @@ ROOT_URLCONF = 'core.urls'
 ROOT_HOSTCONF = "https://ciudades.imfd.cl/backend-2/"
 FORCE_SCRIPT_NAME = "/backend-2"
 ADMIN_MEDIA_PREFIX = "/backend-2"
-<<<<<<< HEAD
-
-=======
->>>>>>> e7fc038a6d8dbe7df03fb04db3423e0fe2a3b9c0
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
