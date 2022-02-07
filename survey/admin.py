@@ -25,7 +25,11 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(models.Reply)
 class ReplyAdmin(admin.ModelAdmin):
-    list_display = ['id','answer','comment','knowledge_scale','reason','date_created']
+    list_display = ['id','answer_id','comment','knowledge_scale','reason','date_created']
+
+    def answer_id(self, obj):
+       return obj.answer_id
+    answer_id.short_description = 'Answer ID'
 
 class QuestionInlineModel(admin.TabularInline):
     model = models.Question
