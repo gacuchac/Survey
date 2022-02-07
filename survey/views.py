@@ -21,7 +21,7 @@ class Survey(generics.ListAPIView):
 class SurveyQuestion(APIView):
 
     def get(self, request, format=None, **kwargs):
-        question = Question.objects.filter(Q(survey__title=kwargs['title']) | Q(survey__title='Ciudad Santiago')).order_by('id')
+        question = Question.objects.filter(Q(survey__title=kwargs['title']) | Q(survey__title='Región Metropolitana')).order_by('id')
         serializer = QuestionSerializer(question, many=True)
 
         return Response(serializer.data)
