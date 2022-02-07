@@ -1,3 +1,4 @@
+
 """
 Django settings for core project.
 
@@ -11,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -58,7 +60,10 @@ ROOT_URLCONF = 'core.urls'
 ROOT_HOSTCONF = "https://ciudades.imfd.cl/backend-2/"
 FORCE_SCRIPT_NAME = "/backend-2"
 ADMIN_MEDIA_PREFIX = "/backend-2"
+<<<<<<< HEAD
 
+=======
+>>>>>>> e7fc038a6d8dbe7df03fb04db3423e0fe2a3b9c0
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -123,9 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -141,4 +145,4 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1', 'https://ciudades.imfd.cl/*', 'http://10.0.107.1/']
 
-CORS_ALLOWED_ALL_ORIGINS = True
+CORS_ALLOWED_ALL_ORIGINS = False
