@@ -59,6 +59,7 @@ class Question(Updated):
     title = models.CharField(max_length=255, verbose_name=_("Title"))
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
     is_active = models.BooleanField(default=True, verbose_name=_("Active Status"))
+    always = models.BooleanField(default=False, verbose_name=("Always Ask"))
 
     def __str__(self):
         return self.title
