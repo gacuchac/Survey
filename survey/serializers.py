@@ -9,16 +9,14 @@ class SurveySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Survey
-        fields = [ 'id', 'title',]
+        fields = '__all__'
 
 class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         
         model = Answer
-        fields = [
-            'id','image','image_url','answer_text','is_right',
-        ]
+        fields = '__all__'
 
 class RandomQuestionSerializer(serializers.ModelSerializer):
 
@@ -27,9 +25,7 @@ class RandomQuestionSerializer(serializers.ModelSerializer):
     class Meta:
     
         model = Question
-        fields = [
-            'title','answer',
-        ]
+        fields = '__all__'
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -40,7 +36,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
     
         model = Question
-        fields = ['id','survey','title','answer', ]
+        fields = '__all__'
 
 class ReplySerializer(serializers.ModelSerializer):
 
