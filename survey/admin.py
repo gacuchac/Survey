@@ -15,7 +15,7 @@ class AnswerInlineModel(admin.TabularInline):
 
 @admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin):
-    fields = ['title', 'survey','is_active']
+    fields = ['title', 'survey','is_active','always']
     list_display =['id','title','survey','date_created','is_active','always']
     inlines = [AnswerInlineModel,]
     
