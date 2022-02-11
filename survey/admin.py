@@ -16,12 +16,12 @@ class AnswerInlineModel(admin.TabularInline):
 @admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin):
     fields = ['title', 'survey','is_active']
-    list_display =['id','title','survey','technique','difficulty','date_created','is_active']
+    list_display =['id','title','survey','date_created','is_active']
     inlines = [AnswerInlineModel,]
     
 @admin.register(models.Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display =['id','question','answer_text','is_right','image','image_url']
+    list_display =['id','question','answer_text','is_right','image_url']
 
 @admin.register(models.Reply)
 class ReplyAdmin(admin.ModelAdmin):

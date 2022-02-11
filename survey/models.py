@@ -54,8 +54,8 @@ class Question(Updated):
     )
 
     survey = models.ForeignKey(Survey, related_name='question', on_delete=models.CASCADE)
-    technique = models.IntegerField(choices=TYPE, default=0, verbose_name=_("Type of Question"))
-    difficulty = models.IntegerField(choices=SCALE, default=0, verbose_name=_("Level of Difficulty"))
+    #technique = models.IntegerField(choices=TYPE, default=0, verbose_name=_("Type of Question"))
+    #difficulty = models.IntegerField(choices=SCALE, default=0, verbose_name=_("Level of Difficulty"))
     title = models.CharField(max_length=255, verbose_name=_("Title"))
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
     is_active = models.BooleanField(default=True, verbose_name=_("Active Status"))
@@ -73,7 +73,7 @@ class Answer(Updated):
     question = models.ForeignKey(Question, related_name='answer', on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=255, verbose_name=_("Answer Text"))
     is_right = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='images/', default='images/default.png')
+    #image = models.ImageField(upload_to='images/', default='images/default.png')
     image_url = models.CharField(max_length=255, verbose_name='image_url', default='https://drive.google.com/uc?export=view&id=14fX5yGbI0xrApvbx58fXkqequoyBSY9Z')
     #date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
 
