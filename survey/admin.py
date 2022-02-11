@@ -10,13 +10,13 @@ class CatAdmin(admin.ModelAdmin):
 
 class AnswerInlineModel(admin.TabularInline):
     model = models.Answer
-    fields =['answer_text','is_right','image','image_url']
+    fields =['answer_text','is_right','image_url']
     extra = 0
 
 @admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin):
     fields = ['title', 'survey','is_active']
-    list_display =['id','title','survey','date_created','is_active']
+    list_display =['id','title','survey','date_created','is_active','always']
     inlines = [AnswerInlineModel,]
     
 @admin.register(models.Answer)
