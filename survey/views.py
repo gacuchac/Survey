@@ -22,9 +22,10 @@ class Survey(generics.ListAPIView):
 class SurveyQuestion(APIView):
 
     def get(self, request, format=None, **kwargs):
-        question = Question.objects.filter(Q(survey__title=kwargs['title']) | Q(always=1)).order_by('id')
-        randomized = random.shuffle(question)
-        serializer = QuestionSerializer(randomized, many=True)
+        question = Question.objects.filter(Q(survey__title=kwargs['title']) | Q(always=1)).order_by('?')
+        #randomized = random.shuffle(question)
+        print(question)
+        serializer = QuestionSerializer(question, many=True)
 
         return Response(serializer.data)
         
