@@ -11,6 +11,7 @@ from .serializers import QuestionSerializer, ReplySerializer, SurveySerializer, 
 from rest_framework.views import APIView
 from rest_framework import status, viewsets
 from django.db.models import Q
+import random
 
 # Create your views here.
 
@@ -22,7 +23,8 @@ class SurveyQuestion(APIView):
 
     def get(self, request, format=None, **kwargs):
         question = Question.objects.filter(Q(survey__title=kwargs['title']) | Q(always=1)).order_by('id')
-        serializer = QuestionSerializer(question, many=True)
+        randomized = random.shuffle(question)
+        serializer = QuestionSerializer(randomized, many=True)
 
         return Response(serializer.data)
         
