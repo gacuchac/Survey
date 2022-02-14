@@ -92,6 +92,7 @@ class Reply(models.Model):
     knowledge_scale = models.IntegerField(default=0)
     reason = models.CharField(max_length=255, default="")
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
+    session = models.CharField(max_length= 255, default="")
 
 class FinalComment(models.Model):
     class Meta:
@@ -102,3 +103,4 @@ class FinalComment(models.Model):
     final_comment = models.CharField(max_length=255, verbose_name=_("Final Comment Text"), default="")
     survey = models.ForeignKey(Survey, related_name='survey', on_delete=models.DO_NOTHING)
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=_("Date Created"))
+    session = models.CharField(max_length= 255, default="")
