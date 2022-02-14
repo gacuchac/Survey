@@ -25,7 +25,7 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(models.Reply)
 class ReplyAdmin(admin.ModelAdmin):
-    list_display = ['id','answer_id','answer','comment','reason','date_created']
+    list_display = ['id','answer_id','answer','comment','reason','session','date_created']
 
     def answer_id(self, obj):
        return obj.answer_id
@@ -44,4 +44,4 @@ class SurveyAdmin(admin.ModelAdmin):
 
 @admin.register(models.FinalComment)
 class FinalCommentAdmin(admin.ModelAdmin):
-    list_display = ['id','survey','final_comment','certainty_sense','date_created']
+    list_display = ['id','survey','final_comment','certainty_sense','session','date_created']
