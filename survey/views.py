@@ -1,3 +1,4 @@
+from ctypes import Union
 from django.db import models
 from django.db.models.query_utils import Q
 from django.shortcuts import render
@@ -22,10 +23,13 @@ class Survey(generics.ListAPIView):
 class SurveyQuestion(APIView):
 
     def get(self, request, format=None, **kwargs):
-        question = Question.objects.filter(Q(survey__title=kwargs['title']) | Q(always=1)).order_by('?')
+        question_comuna = Question.objects.filter(Q(survey__title=kwargs['title'])).order_by('?')[:15]
+        question_rm = Question.objects.filter(Q(always=1)).order_by('?')[:15]
         #randomized = random.shuffle(question)
-        print(question)
-        serializer = QuestionSerializer(question, many=True)
+        # print("---------------------------------\n", question_rm, "---------------------------------\n")
+        question = question_comuna | question_rm
+        # print(question)
+        serializer = QuestionSerializer(question.order_by('?'), many=True)
 
         return Response(serializer.data)
         
